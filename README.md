@@ -1,8 +1,8 @@
-#nostr-chat-widget-react
+# nostr-chat-widget-react
 
 A react component that provides a live-chat widget over nostr.
 
-#Getting Started
+# Getting Started
 
 ```
 npm i nostr-chat-widget-react

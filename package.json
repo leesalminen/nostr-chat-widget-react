@@ -1,6 +1,6 @@
 {
   "name": "nostr-chat-widget-react",
-  "version": "1.0.2",
+  "version": "1.0.4",
   "description": "A react component that provides a live-chat widget over nostr.",
   "main": "./dist/nostr-chat-widget-react.umd.js",
   "module": "./dist/nostr-chat-widget-react.es.js",
