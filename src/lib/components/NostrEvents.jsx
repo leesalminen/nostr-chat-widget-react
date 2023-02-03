@@ -3,12 +3,20 @@ import { useNostrEvents } from "nostr-react"
 
 import NostrEvent from './NostrEvent'
 
-const NostrEvents = ({ authors, keys, recipientPk }) => {
-	const { events } = useNostrEvents({
+const NostrEvents = ({ keys, recipientPk }) => {
+	const sentByMe = useNostrEvents({
 	    filter: {
 	    	kinds: [4],
-		   	authors: authors,
-		   	"#p": authors,
+		   	authors: [keys.pk],
+		   	"#p": [recipientPk],
+	    },
+	})
+
+	const sentToMe = useNostrEvents({
+	    filter: {
+	    	kinds: [4],
+		   	authors: [recipientPk],
+		   	"#p": [keys.pk],
 	    },
 	})
 
@@ -17,11 +25,11 @@ const NostrEvents = ({ authors, keys, recipientPk }) => {
 			const element = document.querySelector('.messages-content');
 		    element.scrollTop = element.scrollHeight;
 		}, 100)
-	}, [events])
+	}, [sentByMe, sentToMe])
 
 	return (
 		<div className="messages-content">
-			{events.sort((a, b) => a.created_at - b.created_at).map((message) => {
+			{[...sentByMe.events, ...sentToMe.events].sort((a, b) => a.created_at - b.created_at).map((message) => {
 				return (
 					<NostrEvent
 						key={message.id}
