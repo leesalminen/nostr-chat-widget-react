@@ -24,7 +24,6 @@ const NostrWidgetContainer = ({ keys, recipientPk, setShowWidget }) => {
 		  		<div className="messages">
 		    		<NostrEvents
 		    			keys={keys}
-		    			authors={[recipientPk, keys.pk]}
 		    			recipientPk={recipientPk} />
 		  		</div>
 			  	<div className="message-box">
