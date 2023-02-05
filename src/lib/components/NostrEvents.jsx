@@ -4,7 +4,7 @@ import { useNostrEvents } from "nostr-react"
 import NostrEvent from './NostrEvent'
 
 const NostrEvents = ({ keys, recipientPk }) => {
-	const sentByMe = useNostrEvents({
+	const {events: sentByMe} = useNostrEvents({
 	    filter: {
 	    	kinds: [4],
 		   	authors: [keys.pk],
@@ -12,7 +12,7 @@ const NostrEvents = ({ keys, recipientPk }) => {
 	    },
 	})
 
-	const sentToMe = useNostrEvents({
+	const {events: sentToMe} = useNostrEvents({
 	    filter: {
 	    	kinds: [4],
 		   	authors: [recipientPk],
@@ -29,7 +29,7 @@ const NostrEvents = ({ keys, recipientPk }) => {
 
 	return (
 		<div className="messages-content">
-			{[...sentByMe.events, ...sentToMe.events].sort((a, b) => a.created_at - b.created_at).map((message) => {
+			{[...sentByMe, ...sentToMe].sort((a, b) => a.created_at - b.created_at).map((message) => {
 				return (
 					<NostrEvent
 						key={message.id}
