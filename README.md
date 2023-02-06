@@ -1,6 +1,6 @@
 # nostr-chat-widget-react
 
-A react component that provides a live-chat widget over nostr.
+A react component that provides a live-chat widget over nostr. Check out a live demo of this in-action at (https://leesalminen.com)[https://leesalminen.com]
 
 # Getting Started
 
